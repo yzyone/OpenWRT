@@ -1,0 +1,35 @@
+1、遇到第一个错误
+In file included from scripts/selinux/genheaders/genheaders.c:19:
+./security/selinux/include/classmap.h:245:2: error: #error New address family defined, please update secclass_map.
+  245 | #error New address family defined, please update secclass_map.
+      |  ^~~~~
+make[3]: *** [scripts/Makefile.host:102: scripts/selinux/genheaders/genheaders] Error 1
+make[2]: *** [scripts/Makefile.build:585: scripts/selinux/genheaders] Error 2
+make[1]: *** [scripts/Makefile.build:585: scripts/selinux] Error 2
+make: *** [Makefile:572: scripts] Error 2
+
+2、遇到第二个错误
+git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/packages
+
+git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/luci
+
+git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/routing
+
+git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/telephony
+
+3、遇到第三个错误
+checking whether mknod can create fifo without root privileges... configure: error: in `/home/friendlywrt-h5/friendlywrt/build_dir/host/tar-1.32':
+configure: error: you should not run configure as root (set FORCE_UNSAFE_CONFIGURE=1 in environment to bypass this check)
+See `config.log' for more details
+make[3]: *** [Makefile:32: /home/friendlywrt-h5/friendlywrt/build_dir/host/tar-1.32/.configured] Error 1
+make[3]: Leaving directory '/home/friendlywrt-h5/friendlywrt/tools/tar'
+time: tools/tar/compile#11.05#4.17#18.52
+make[2]: *** [tools/Makefile:159: tools/tar/compile] Error 2
+make[2]: Leaving directory '/home/friendlywrt-h5/friendlywrt'
+make[1]: *** [tools/Makefile:155: /home/friendlywrt-h5/friendlywrt/staging_dir/host/stamp/.tools_compile_yyyyynnyyyynyyyyynyynnyyyynyyyyyyyyyyyyyyynynynnyyynnyyy] Error 2
+make[1]: Leaving directory '/home/friendlywrt-h5/friendlywrt'
+make: *** [/home/friendlywrt-h5/friendlywrt/include/toplevel.mk:227: world] Error 2
+Command exited with non-zero status 2
+you take 5:55.25 to build friendlywrt
+
+export FORCE_UNSAFE_CONFIGURE=1
