@@ -1,4 +1,4 @@
-1、遇到第一个错误
+一、遇到第一个错误
 In file included from scripts/selinux/genheaders/genheaders.c:19:
 ./security/selinux/include/classmap.h:245:2: error: #error New address family defined, please update secclass_map.
   245 | #error New address family defined, please update secclass_map.
@@ -8,16 +8,26 @@ make[2]: *** [scripts/Makefile.build:585: scripts/selinux/genheaders] Error 2
 make[1]: *** [scripts/Makefile.build:585: scripts/selinux] Error 2
 make: *** [Makefile:572: scripts] Error 2
 
-2、遇到第二个错误
+解决办法：
+
+1、找到错误中提示的.c文件，genheader.c文件和mdp.c文件 编辑
+vim ./kernel/scripts/selinux/genheaders/genheaders.c
+vim ./kernel/scripts/selinux/mdp/mdp.c
+去掉两个文件的头部引用中的
+#include <sys/socket.h>
+2、找到错误提示中的classmap.h文件
+vim ./kernel/security/selinux/include/classmap.h 
+编辑classmap.h，在头文件中添加
+#include <linux/socket.h>
+重新编译即可
+
+二、遇到第二个错误
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/packages
-
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/luci
-
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/routing
-
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/telephony
 
-3、遇到第三个错误
+三、遇到第三个错误
 checking whether mknod can create fifo without root privileges... configure: error: in `/home/friendlywrt-h5/friendlywrt/build_dir/host/tar-1.32':
 configure: error: you should not run configure as root (set FORCE_UNSAFE_CONFIGURE=1 in environment to bypass this check)
 See `config.log' for more details
@@ -32,4 +42,6 @@ make: *** [/home/friendlywrt-h5/friendlywrt/include/toplevel.mk:227: world] Erro
 Command exited with non-zero status 2
 you take 5:55.25 to build friendlywrt
 
+解决办法：
 export FORCE_UNSAFE_CONFIGURE=1
+
