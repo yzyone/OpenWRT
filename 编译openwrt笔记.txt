@@ -22,6 +22,8 @@ vim ./kernel/security/selinux/include/classmap.h
 重新编译即可
 
 二、遇到第二个错误
+git config --global --add safe.directory /home/data/friendlywrt-h5
+git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/packages
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/luci
 git config --global --add safe.directory /home/data/friendlywrt-h5/friendlywrt/feeds/routing
